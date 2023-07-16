@@ -7,6 +7,7 @@ import { IAddToDo } from 'src/app/interfaces/IAddToDO';
   styleUrls: ['./add-to-do.component.scss']
 })
 export class AddToDoComponent {
+  @Input() messageBtn: string = '';
   @Input() props:IAddToDo = {} as IAddToDo
   valueTask: string = '';
 
@@ -14,7 +15,7 @@ export class AddToDoComponent {
     this.valueTask = e.target.value
   };
 
-  callParent = () => {
+  callParent = (e:any) => {
     this.props.addTaskChild(this.valueTask);
     this.valueTask = "";
   };

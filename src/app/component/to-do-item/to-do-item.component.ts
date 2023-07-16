@@ -9,6 +9,7 @@ import { ITaskActions } from '../../interfaces/ITaskActions';
 export class ToDoItemComponent implements OnInit {
   @Input() taskActions: ITaskActions = {} as ITaskActions;
   @Input() description: any;
+  @Input() index: number = 0;
   isEditing: boolean = false;
   initialValue: string = "";
   isDone: boolean = true;
@@ -19,21 +20,21 @@ export class ToDoItemComponent implements OnInit {
     //throw new Error('Method not implemented.');
   }
 
-  deleteItem = (event: any, property: any) => {
-    this.taskActions.deleteTaskChild(this.description, parseInt(event.target.id));
+  deleteItem = (event: any) => {
+    this.taskActions.deleteTaskChild(this.description, this.index);
   }
 
-  onEdit = () => {
+  onEdit = (event: any) => {
     this.initialValue = this.description
     this.isEditing = true;
   }
 
-  saveChanges = (event: any, property: any) => {
-    this.taskActions.editTaskChild(this.initialValue, this.description, parseInt(event.target.id));
+  saveChanges = (event: any) => {
+    this.taskActions.editTaskChild(this.initialValue, this.description, this.index);
     this.isEditing = false;
   }
 
-  onChangeValueTask = (event: any, property: any) => {
+  onChangeValueTask = (event: any) => {
     this.description = event.target.value;
   };
 
