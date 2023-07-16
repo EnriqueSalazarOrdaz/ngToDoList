@@ -1,0 +1,7 @@
+<ng-container>
+    <section class='addToDoContainer'>
+        <input type="text" placeholder="Type your task here" class='inputTask' (change)="onChangeValueTask($event)"
+            [value]="valueTask" />
+        <button class='addButton' (click)="callParent($event)">{{this.props.messageBtn}}</button>
+    </section>
+</ng-container>

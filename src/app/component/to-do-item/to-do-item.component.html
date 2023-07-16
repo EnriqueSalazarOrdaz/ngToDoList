@@ -1,0 +1,22 @@
+<ng-container>
+    <section class='taskDescriptionContainer'>
+        <ng-container *ngIf="isEditing">
+            <section class='editContainer'>
+                <input type="text" placeholder="Edit your task here" class='inputTask'
+                    (change)="onChangeValueTask($event)" value={{description}} />
+                <button class='saveButton' id={props.index} (click)="saveChanges($event)">Save</button>
+            </section>
+        </ng-container>
+        <ng-container *ngIf="!isEditing">
+            <span [ngClass]="{isDone: 'lineText'}" (click)="taskDone($event)">{{this.description}}</span>
+            <section class='buttonsArea'>
+                <button class='buttonsIcons' (click)="onEdit($event)">
+                    <img alt="iconEdit" class='imgIcon' src="../../../assets/img/imgEdit.png" />
+                </button>
+                <button class='buttonsIcons' (click)="deleteItem($event)">
+                    <img alt="iconDelete" class='imgIcon' id={props.index} src="../../../assets/img/imgDelete.png">
+                </button>
+            </section>
+        </ng-container>
+    </section>
+</ng-container>
