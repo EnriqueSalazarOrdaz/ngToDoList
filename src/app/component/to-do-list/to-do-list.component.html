@@ -1,0 +1,31 @@
+<ng-container>
+    <section class="areaToDoList">
+        <section class="container">
+            <header class="headerTitle">
+                <h1 class="titleToDoList">To Do App
+                    <img alt="iconPin" class="pinIcon" src={pinIcon}>
+                    </img>
+                </h1>
+                <span class="subTitle">Enjoy managing your tasks!</span>
+                <hr />
+            </header>
+            <section class="containerItems">
+                <ng-container *ngIf="listTask.length === 0">
+                    <div class="messageArea">
+                        <span class="message">Add a new task here
+                            <img alt="iconDown" class="downIcon" src={imgDown}>
+                            </img>
+                        </span>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="listTask.length !== 0">
+                    <ng-container *ngFor="let item of listTask; let i = index">
+                        <ToDoItem key={index} index={index} taskDescription={item} deleteTaskChild={deleteTask}
+                            editTaskChild={editTask} />
+                    </ng-container>
+                </ng-container>
+            </section>
+            <AddToDo addTaskChild={addTask} messageBtn={{"Add To Do"}} />
+        </section>
+    </section>
+</ng-container>
